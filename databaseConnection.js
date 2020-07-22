@@ -10,15 +10,8 @@ const connection = {
     max: 30
 };
 
-const db = pgp(connection);
+const databaseConnection = pgp(connection);
 
-db.any('select * from books', [true])
-    .then(data => {
-        console.log('DATA:', data);
-        return response.data = data;
-    })
-    .catch(error => {
-        console.log('ERROR:', error);
-    })
-    .finally(db.$pool.end);
-
+module.exports = {
+    databaseConnection
+}
