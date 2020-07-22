@@ -4,6 +4,7 @@
   "description": "A library app connected to a PostgreSQL database",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/HeatherJLewis/bookish/issues"
   },
-  "homepage": "https://github.com/HeatherJLewis/bookish#readme"
+  "homepage": "https://github.com/HeatherJLewis/bookish#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "pg-promise": "^10.5.8"
+  }
 }
