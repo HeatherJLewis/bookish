@@ -1,0 +1,20 @@
+{
+  "name": "bookish",
+  "version": "1.0.0",
+  "description": "A library app connected to a PostgreSQL database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeatherJLewis/bookish.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HeatherJLewis/bookish/issues"
+  },
+  "homepage": "https://github.com/HeatherJLewis/bookish#readme"
+}
