@@ -1,14 +1,15 @@
 const express = require("express");
-const router = require("./routes");
+const books = require("./routers/books");
+const user = require("./routers/user");
+const session = require("./routers/session");
+
 
 const app = express();
 const PORT = 3000;
 
-app.use("/books", router)
-
-app.get("/", (request, response) => {
-    response.send("Welcome to our library!")
-})
+app.use('/', session)
+app.use('/books', books)
+app.use('/user', user)
 
 app.listen(PORT, () => {
     console.log(`Listening on ${PORT}`);
