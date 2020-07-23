@@ -9,11 +9,9 @@ session.get('/', (request, response) => {
     response.send("Welcome to your library")
 })
 
-// session.get("/login", (request, response) => {
-//     response.send("Please enter your username and password")
-// })
-
-session.get("/login", checkForUser)
+session.get("/login", (request, response) => {
+    response.send("Please enter your username and password")
+})
 
 session.post("/login", checkForUser, (request, response) => {
     const token = jwt.sign(request.body, privateKey, { expiresIn: '1800s' })

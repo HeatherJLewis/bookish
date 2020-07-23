@@ -7,3 +7,5 @@
 
 // open ended piece of middle ware makes no assumptions about how to authenticate
 // passport - wraps around everything you define lines 1 -4 it does 5 and 6
+
+
