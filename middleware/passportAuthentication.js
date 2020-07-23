@@ -1,11 +1,27 @@
-// take in jwt from request header
-// decrypt
-// password and username
-// check db contains password and username
-// allow access to functionality if success
-// if failure reject
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const { privateKey } = require('../apiCredentials')
+const passport = require('passport');
+const { databaseConnection } = require("../databaseConnection")
 
-// open ended piece of middle ware makes no assumptions about how to authenticate
-// passport - wraps around everything you define lines 1 -4 it does 5 and 6
+// configure
+let options = {};
+options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+options.secretOrKey = privateKey;
 
+const configurePassport = () => {
+    passport.use(new JwtStrategy(options, function(jwt_payload, done) {
+        databaseConnection.any(`SELECT EXISTS(SELECT * FROM users WHERE username='${jwt_payload.username}');`, [true])
+        .then(data => {
+            if (data[0].exists) {
+                return done(null, jwt_payload);
+            } else {
+                return done(null, false);
+            }
+        })
+    }));
+}
 
+module.exports = {
+    configurePassport
+}

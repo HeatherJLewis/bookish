@@ -9,7 +9,6 @@ const checkForUser = (request, response, next) => {
         }
         next()
         }
-
     )
     .catch(error => {
         console.log('ERROR:', error);
