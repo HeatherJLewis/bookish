@@ -1,8 +1,8 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const { privateKey } = require('../apiCredentials')
 
 const session = express.Router();
-const PRIVATE_KEY = "Pangolins Rule";
 
 session.get('/', (request, response) => {
     response.send("Welcome to your library")
@@ -13,7 +13,7 @@ session.get("/login", (request, response) => {
 })
 
 session.post("/login", (request, response) => {
-    const token = jwt.sign(request.body, PRIVATE_KEY)
+    const token = jwt.sign(request.body, privateKey)
     response.cookie('ckns_jwt', token);
     response.send("You are logged in")
 })
