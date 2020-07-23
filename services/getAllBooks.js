@@ -1,5 +1,5 @@
 const { databaseConnection } = require("../databaseConnection")
-const { Book } = require("../book");
+const { Book } = require("./book");
 
 const getAllBooks = (request, response, next) => {
     databaseConnection.any('select * from books', [true])
