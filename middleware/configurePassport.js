@@ -9,8 +9,13 @@ options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 options.secretOrKey = privateKey;
 
 const configurePassport = () => {
+
     passport.use(new JwtStrategy(options, function(jwt_payload, done) {
-        databaseConnection.any(`SELECT EXISTS(SELECT * FROM users WHERE username='${jwt_payload.username}');`, [true])
+        const namedParameters = {
+            username: jwt_payload.username
+        };
+
+        databaseConnection.any('SELECT EXISTS(SELECT * FROM users WHERE username=${username});', namedParameters)
         .then(data => {
             if (data[0].exists) {
                 return done(null, jwt_payload);

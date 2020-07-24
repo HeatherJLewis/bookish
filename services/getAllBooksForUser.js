@@ -2,11 +2,15 @@ const { databaseConnection } = require("../databaseConnection")
 const jwtDecode = require('jwt-decode')
 const { Book } = require("./book");
 
+const getAllBooksQueryString = 'SELECT * FROM users INNER JOIN copiesofbooks ON userid = users.id INNER JOIN books ON books.id = bookid WHERE username=${username};'
+
 const getAllBooksForUser = (request, response, next) => {
     const { username } = jwtDecode(request.headers.authorization)
-    databaseConnection.any(`SELECT * FROM books
-    INNER JOIN copiesofbooks ON bookid = id
-    INNER JOIN users ON username = '${username}';`, [true])
+    const namedParameters = {
+        username,
+    };
+
+    databaseConnection.any(getAllBooksQueryString, namedParameters)
     .then(data => {
         const listOfBooks = data.map(book => {
             return new Book(book.bookid, book.title, book.author, book.isbn, book.barcode);

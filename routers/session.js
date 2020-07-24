@@ -1,7 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const { privateKey } = require('../apiCredentials');
-const {checkForUser} = require('../services/checkForUser');
+const {checkForUser} = require('../middleware/checkForUser');
 
 const session = express.Router();
 
