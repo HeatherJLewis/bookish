@@ -4,7 +4,6 @@ const { privateKey } = require('../apiCredentials')
 const passport = require('passport');
 const { databaseConnection } = require("../databaseConnection")
 
-// configure
 let options = {};
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 options.secretOrKey = privateKey;

@@ -1,16 +1,13 @@
 const express = require('express');
 const passport = require('passport');
-const jwtDecode = require('jwt-decode')
+const jwtDecode = require('jwt-decode');
+const {getAllBooksForUser} = require('../services/getAllBooksForUser');
 const user = express.Router()
 
-user.get('/', (request, response) => {
+user.get('/', passport.authenticate("jwt", { session : false }), (request, response) => {
     response.send("Hello Bob")
 })
 
-user.get('/loans', passport.authenticate("jwt", { session : false }), (request, response) => {
-    const { username } = jwtDecode(request.headers.authorization)
-
-    response.send(`Hello loaned books for ${username}`)
-})
+user.get('/loans', passport.authenticate("jwt", { session : false }), getAllBooksForUser)
 
 module.exports = user;

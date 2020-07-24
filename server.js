@@ -3,7 +3,7 @@ const books = require("./routers/books");
 const user = require("./routers/user");
 const session = require("./routers/session");
 const bodyParser = require('body-parser');
-const {configurePassport} = require("./middleware/passportAuthentication")
+const {configurePassport} = require("./middleware/configurePassport")
 const passport = require('passport');
 
 configurePassport()
