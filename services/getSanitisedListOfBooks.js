@@ -1,14 +1,8 @@
 const { databaseConnection } = require("../databaseConnection")
 const { Book } = require("./book");
 
-const getAllBooksQueryString = 'SELECT * FROM books WHERE title=${title}'
-
-const getBookDetailsForGivenTitle = (request, response, next) => {
-    const namedParameters = {
-        title: request.query.title,
-    };
-
-    databaseConnection.any(getAllBooksQueryString, namedParameters)
+const getSanitisedListOfBooks = (response, sqlQueryString, namedParameters) => {
+    databaseConnection.any(sqlQueryString, namedParameters)
     .then(data => {
         const listOfBooks = data.map(book => {
             return new Book(book.bookid, book.title, book.author, book.isbn, book.barcode);
@@ -21,5 +15,5 @@ const getBookDetailsForGivenTitle = (request, response, next) => {
 }
 
 module.exports = {
-    getBookDetailsForGivenTitle
+    getSanitisedListOfBooks
 }
