@@ -1,5 +1,5 @@
 const jwtDecode = require('jwt-decode')
-const { databaseConnection } = require("../databaseConnection")
+const { databaseConnection } = require("../config/pgPromiseDbConnection")
 const { Book } = require("./book");
 
 const getAllBooksQueryString = 'SELECT * FROM users INNER JOIN copiesofbooks ON userid = users.id INNER JOIN books ON books.id = bookid WHERE username=${username};'

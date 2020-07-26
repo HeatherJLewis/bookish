@@ -1,4 +1,4 @@
-const apiCredentials = require('./apiCredentials');
+const apiCredentials = require('../apiCredentials');
 const pgp = require('pg-promise')();
 
 const connection = {

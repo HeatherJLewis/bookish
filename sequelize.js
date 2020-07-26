@@ -1,4 +1,3 @@
-const { sequelizeDatabaseConnection } = require('./config/sequelize');
 const { Books, Users, CopiesOfBooks } = require('./services/models')
 
 Books.findAll()

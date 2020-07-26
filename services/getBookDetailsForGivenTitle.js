@@ -1,4 +1,4 @@
-const { databaseConnection } = require("../databaseConnection")
+const { databaseConnection } = require("../config/pgPromiseDbConnection")
 const { Book } = require("./book");
 
 const getAllBooksQueryString = 'SELECT * FROM books WHERE title=${title}'

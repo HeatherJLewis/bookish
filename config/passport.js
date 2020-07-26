@@ -2,7 +2,7 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const { privateKey } = require('../apiCredentials')
 const passport = require('passport');
-const { databaseConnection } = require("../databaseConnection")
+const { databaseConnection } = require("./pgPromiseDbConnection")
 
 let options = {};
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();

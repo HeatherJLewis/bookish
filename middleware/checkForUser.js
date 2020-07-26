@@ -1,4 +1,4 @@
-const { databaseConnection } = require("../databaseConnection")
+const { databaseConnection } = require("../config/pgPromiseDbConnection")
 
 const checkForUser = (request, response, next) => {
     const namedParameters = {
