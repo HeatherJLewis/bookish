@@ -9,12 +9,12 @@ const Books = database.define('books', {
     },
     author: {
         type: Sequelize.STRING
-    },
-    isbn: {
-        type: Sequelize.STRING
-    },
-    barcode: {
-        type: Sequelize.STRING
+    // },
+    // isbn: {
+    //     type: Sequelize.STRING
+    // },
+    // barcode: {
+    //     type: Sequelize.STRING
     }
 })
 
